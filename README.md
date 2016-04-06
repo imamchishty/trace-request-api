@@ -16,7 +16,7 @@ This library provides:
 These implementations allow the RequestModel to be logged to whatever sink required. A default impl has been provided __DefaultLoggingHandler__, this uses SLF4J to log the model at INFO level. 
 The MDC is set by __LoggingRequestFilter__.
 
-- __RequestModel__:
+- __RequestModel__: Model stored in the thread local. 
 
 - __RequestThreadLocalHelper__: please see the next section.
 
