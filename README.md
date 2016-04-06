@@ -5,6 +5,9 @@
 ## Introduction
 
 Request Filter API provides an API which is used by [filter-request-id](https://github.com/imamchishty/filter-request-id).
+You need to provide implementations of some of this libraries interface and inject those implementations to the [__LoggingRequestFilter__](https://github.com/imamchishty/filter-request-id/blob/master/src/main/java/com/shedhack/filter/requestid/filter/LoggingRequestFilter.java).
+You could implement DB logging, file etc.
+
 This library provides:
 
 - __HttpHeaderKeysEnum__: header keys that available in the HTTP request.
