@@ -8,10 +8,11 @@ package com.shedhack.filter.api.constant;
 public enum HttpHeaderKeysEnum {
 
     REQUEST_ID("request-id"),
-    GROUP_ID("group-id"),
+    GROUP_ID("chain-id"),
     CALLER_ID("caller-id"),
     HOST("host"),
-    CLIENT_ADDRESS("X-Forwarded-For");
+    CHAIN_COUNT("chain-count"),
+    APPLICATION_ID("application-id");
 
     private final String key;
 

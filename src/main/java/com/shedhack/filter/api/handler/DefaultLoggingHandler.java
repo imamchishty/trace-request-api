@@ -18,21 +18,25 @@ public class DefaultLoggingHandler implements LoggingHandler {
     /**
      * Logs the {@link RequestModel}
      *
-     * The MDC will already contain the request-id, group-id, so it isn't worth
-     * logging those (you'd get them twice in the log entry).
      */
     public void log(RequestModel model) {
         if(model != null) {
             LOGGER.info("{" +
-                    "path='" + model.getPath() + '\'' +
+                    "applicationId='" + model.getApplicationId() + '\'' +
+                    ", requestId='" + model.getRequestId() + '\'' +
+                    ", groupId='" + model.getGroupId() + '\'' +
                     ", callerId='" + model.getCallerId() + '\'' +
+                    ", path='" + model.getPath() + '\'' +
                     ", sessionId='" + model.getSessionId() + '\'' +
+                    ", httpMethod='" + model.getHttpMethod() + '\'' +
                     ", clientAddress='" + model.getClientAddress() + '\'' +
                     ", hostAddress='" + model.getHostAddress() + '\'' +
-                    ", httpMethod='" + model.getHttpMethod() + '\'' +
+                    ", dateTime=" + model.getDateTime() +
+                    ", count=" + model.getCount() +
                     '}');
         }
     }
+
 
 
 }

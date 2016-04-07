@@ -1,5 +1,7 @@
 package com.shedhack.filter.api.model;
 
+import java.util.Date;
+
 /**
  * Interface for the RequestModel.
  *
@@ -7,11 +9,15 @@ package com.shedhack.filter.api.model;
  */
 public interface RequestModel {
 
+    String getApplicationId();
+
     String getRequestId();
 
     String getGroupId();
 
     String getCallerId();
+
+    int getCount();
 
     String getPath();
 
@@ -22,4 +28,6 @@ public interface RequestModel {
     String getClientAddress();
 
     String getHostAddress();
+
+    Date getDateTime();
 }
