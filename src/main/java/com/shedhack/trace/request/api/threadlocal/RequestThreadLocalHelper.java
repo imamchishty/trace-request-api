@@ -1,7 +1,7 @@
-package com.shedhack.filter.api.threadlocal;
+package com.shedhack.trace.request.api.threadlocal;
 
 
-import com.shedhack.filter.api.model.RequestModel;
+import com.shedhack.trace.request.api.model.RequestModel;
 
 /**
  * ThreadLocal wrapper for {@ RequestModel}

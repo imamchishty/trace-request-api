@@ -1,6 +1,6 @@
-# Request Filter API
+# Trace Request API
 
-[![Build Status](https://travis-ci.org/imamchishty/filter-request-api.svg?branch=master "filter-request-api")](https://travis-ci.org/imamchishty/filter-request-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/filter-request-api/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/filter-request-api)
+[![Build Status](https://travis-ci.org/imamchishty/trace-request-api.svg?branch=master "trace-request-api")](https://travis-ci.org/imamchishty/trace-request-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/trace-request-api/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/trace-request-api)
 
 ## Introduction
 
@@ -22,7 +22,7 @@ The MDC is set by __LoggingRequestFilter__.
 
 ## Thread Local
 
-The request Id is also stored as a Thread Local variable. A static library, [Thread Local Utility](https://github.com/imamchishty/filter-request-api/blob/master/src/main/java/com/shedhack/filter/api/threadlocal/RequestThreadLocalHelper.java) has been used to manage it (set/get/remove). The object stored in the TL is a [__RequestModel__](https://github.com/imamchishty/filter-request-api/blob/master/src/main/java/com/shedhack/filter/api/model/RequestModel.java).
+The request Id is also stored as a Thread Local variable. A static library, [Thread Local Utility](https://github.com/imamchishty/trace-request-api/blob/master/src/main/java/com/shedhack/filter/api/threadlocal/RequestThreadLocalHelper.java) has been used to manage it (set/get/remove). The object stored in the TL is a [__RequestModel__](https://github.com/imamchishty/trace-request-api/blob/master/src/main/java/com/shedhack/filter/api/model/RequestModel.java).
 You can use this library to get access to the variable. The filter will also clear the TL. 
 
 ## Dependencies
@@ -41,11 +41,11 @@ Project has been built using JDK 1.8.
 
 ## Maven central
 
-This artifact is available in [Maven Central](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/filter-request-api).
+This artifact is available in [Maven Central](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/trace-request-api).
  
     <dependency>
         <groupId>com.shedhack.filter</groupId>
-        <artifactId>filter-request-api</artifactId>
+        <artifactId>trace-request-api</artifactId>
         <version>x.x.x</version>
     </dependency>    
 

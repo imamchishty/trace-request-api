@@ -1,6 +1,6 @@
-package com.shedhack.filter.api.handler;
+package com.shedhack.trace.request.api.handler;
 
-import com.shedhack.filter.api.model.RequestModel;
+import com.shedhack.trace.request.api.model.RequestModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

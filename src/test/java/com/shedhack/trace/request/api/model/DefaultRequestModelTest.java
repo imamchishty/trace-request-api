@@ -1,4 +1,4 @@
-package com.shedhack.filter.api.model;
+package com.shedhack.trace.request.api.model;
 
 import org.junit.Test;
 
