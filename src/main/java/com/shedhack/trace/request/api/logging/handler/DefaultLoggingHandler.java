@@ -32,7 +32,7 @@ public class DefaultLoggingHandler implements LoggingHandler {
                     ", clientAddress='" + model.getClientAddress() + '\'' +
                     ", hostAddress='" + model.getHostAddress() + '\'' +
                     ", dateTime=" + model.getDateTime() +
-                    ", count=" + model.getCount() +
+                    ", headers=" + model.getHeaders() +
                     '}');
         }
     }

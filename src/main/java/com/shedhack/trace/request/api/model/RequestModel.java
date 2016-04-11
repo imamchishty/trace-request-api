@@ -3,7 +3,13 @@ package com.shedhack.trace.request.api.model;
 import java.util.Date;
 
 /**
- * Interface for the RequestModel.
+ * <pre>
+ *  Interface for the RequestModel containing the following properties:
+ *
+ *  applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
+ *  clientAddress, hostAddress, dateTime, http headers.
+ *
+ * </pre>
  *
  * @author imamchishty
  */
@@ -17,8 +23,6 @@ public interface RequestModel {
 
     String getCallerId();
 
-    int getCount();
-
     String getPath();
 
     String getSessionId();
@@ -30,4 +34,9 @@ public interface RequestModel {
     String getHostAddress();
 
     Date getDateTime();
+
+    /**
+     * Returns the full HTTP headers as a single JSON string.
+     */
+    String getHeaders();
 }

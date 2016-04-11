@@ -1,20 +1,52 @@
-package com.shedhack.trace.request.api.model;
+package com.shedhack.trace.request.api.threadlocal;
 
+import com.shedhack.trace.request.api.model.DefaultRequestModel;
+import com.shedhack.trace.request.api.model.RequestModel;
 import org.junit.Test;
 
 import java.util.Date;
 
+import static junit.framework.TestCase.assertNull;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Tests the {@link DefaultRequestModel}
+ * Test for {@link RequestThreadLocalHelper}
+ *
+ * @author imamchishty
  */
-public class DefaultRequestModelTest {
+public class RequestThreadLocalHelperTest {
 
     @Test
-    public void should_create_valid_model() {
+    public void should_create_thread_local() {
 
-        // Arrange
+        // get model
+        RequestModel model = makeModel();
+
+        // Save to threadlocal
+        RequestThreadLocalHelper.set(model);
+
+        // Assert
+        assertEquals(model, RequestThreadLocalHelper.get());
+
+    }
+
+    @Test
+    public void should_clear_thread_local() {
+
+        // get model
+        RequestModel model = makeModel();
+
+        // Save to threadlocal
+        RequestThreadLocalHelper.set(model);
+        assertEquals(model, RequestThreadLocalHelper.get());
+
+        // Clear
+        RequestThreadLocalHelper.clear();
+        assertNull(RequestThreadLocalHelper.get());
+    }
+
+    public static RequestModel makeModel() {
+
         String appId = "appId";
         String reqId = "reqId";
         String grpId = "grpId";
@@ -29,18 +61,6 @@ public class DefaultRequestModelTest {
         builder.withDateTime(new Date()).withCallerId(calId).withClientAddress(IPadd)
                 .withHostAddress(IPadd).withHttpHeaders(headers).withPath(path).withSessionId(sesId);
 
-        RequestModel model = builder.build();
-
-        // Assert
-        assertEquals(appId, model.getApplicationId());
-        assertEquals(reqId, model.getRequestId());
-        assertEquals(grpId, model.getGroupId());
-        assertEquals(calId, model.getCallerId());
-        assertEquals(IPadd, model.getClientAddress());
-        assertEquals(IPadd, model.getHostAddress());
-        assertEquals(path, model.getPath());
-        assertEquals(sesId, model.getSessionId());
-        assertEquals(headers, model.getHeaders());
+        return builder.build();
     }
-
 }

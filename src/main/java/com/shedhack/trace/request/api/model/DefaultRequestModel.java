@@ -7,7 +7,7 @@ import java.util.Date;
  *  Request model containing the following properties:
  *
  *  applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
- *  clientAddress, hostAddress, dateTime, count.
+ *  clientAddress, hostAddress, dateTime, http headers.
  *
  * </pre>
  *
@@ -22,9 +22,13 @@ public class DefaultRequestModel implements RequestModel {
 
     public static class Builder {
 
+        public Builder(String appId, String reqId, String groupId) {
+            withApplicationId(appId).withRequestId(reqId).withGroupId(groupId);
+        }
+
         DefaultRequestModel model = new DefaultRequestModel();
 
-        public Builder withApplicationId(String id) {
+        private Builder withApplicationId(String id) {
             model.applicationId = id;
             return this;
         }
@@ -34,23 +38,18 @@ public class DefaultRequestModel implements RequestModel {
             return this;
         }
 
-        public Builder withRequestId(String requestId) {
+        private Builder withRequestId(String requestId) {
             model.requestId = requestId;
             return this;
         }
 
-        public Builder withGroupId(String groupId) {
+        private Builder withGroupId(String groupId) {
             model.groupId = groupId;
             return this;
         }
 
         public Builder withCallerId(String callerId) {
             model.callerId = callerId;
-            return this;
-        }
-
-        public Builder withCount(int count) {
-            model.count = count;
             return this;
         }
 
@@ -79,6 +78,11 @@ public class DefaultRequestModel implements RequestModel {
             return this;
         }
 
+        public Builder withHttpHeaders(String headers) {
+            model.headers = headers;
+            return this;
+        }
+
         public RequestModel build() {
             return model;
         }
@@ -88,8 +92,8 @@ public class DefaultRequestModel implements RequestModel {
     // Static method
     // ----------------
 
-    public static Builder builder() {
-        return new Builder();
+    public static Builder builder(String applicationId, String requestId, String groupId) {
+        return new Builder(applicationId, requestId, groupId);
     }
 
     // -----------------------
@@ -97,11 +101,9 @@ public class DefaultRequestModel implements RequestModel {
     // -----------------------
 
     private String applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
-            clientAddress, hostAddress;
+            clientAddress, hostAddress, headers;
 
     private Date dateTime;
-
-    private int count;
 
     public DefaultRequestModel() {
     }
@@ -186,23 +188,21 @@ public class DefaultRequestModel implements RequestModel {
         this.dateTime = dateTime;
     }
 
-    public int getCount() {
-        return count;
+    public String getHeaders() {
+        return headers;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setHeaders(String headers) {
+        this.headers = headers;
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         DefaultRequestModel that = (DefaultRequestModel) o;
 
-        if (count != that.count) return false;
         if (applicationId != null ? !applicationId.equals(that.applicationId) : that.applicationId != null)
             return false;
         if (requestId != null ? !requestId.equals(that.requestId) : that.requestId != null) return false;
@@ -214,6 +214,7 @@ public class DefaultRequestModel implements RequestModel {
         if (clientAddress != null ? !clientAddress.equals(that.clientAddress) : that.clientAddress != null)
             return false;
         if (hostAddress != null ? !hostAddress.equals(that.hostAddress) : that.hostAddress != null) return false;
+        if (headers != null ? !headers.equals(that.headers) : that.headers != null) return false;
         return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
 
     }
@@ -229,11 +230,12 @@ public class DefaultRequestModel implements RequestModel {
         result = 31 * result + (httpMethod != null ? httpMethod.hashCode() : 0);
         result = 31 * result + (clientAddress != null ? clientAddress.hashCode() : 0);
         result = 31 * result + (hostAddress != null ? hostAddress.hashCode() : 0);
+        result = 31 * result + (headers != null ? headers.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
-        result = 31 * result + count;
         return result;
     }
 
+    @Override
     public String toString() {
         return "DefaultRequestModel{" +
                 "applicationId='" + applicationId + '\'' +
@@ -245,8 +247,8 @@ public class DefaultRequestModel implements RequestModel {
                 ", httpMethod='" + httpMethod + '\'' +
                 ", clientAddress='" + clientAddress + '\'' +
                 ", hostAddress='" + hostAddress + '\'' +
+                ", headers='" + headers + '\'' +
                 ", dateTime=" + dateTime +
-                ", count=" + count +
                 '}';
     }
 }

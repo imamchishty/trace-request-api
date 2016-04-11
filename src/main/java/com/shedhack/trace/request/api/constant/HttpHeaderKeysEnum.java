@@ -12,7 +12,8 @@ public enum HttpHeaderKeysEnum {
     CALLER_ID("caller-id"),
     HOST("host"),
     CHAIN_COUNT("chain-count"),
-    APPLICATION_ID("application-id");
+    APPLICATION_ID("application-id"),
+    CALLER_IP("X-Forwarded-For");
 
     private final String key;
 
