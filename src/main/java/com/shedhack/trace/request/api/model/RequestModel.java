@@ -1,13 +1,15 @@
 package com.shedhack.trace.request.api.model;
 
+import com.shedhack.trace.request.api.constant.Status;
+
 import java.util.Date;
 
 /**
  * <pre>
  *  Interface for the RequestModel containing the following properties:
  *
- *  applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
- *  clientAddress, hostAddress, dateTime, http headers.
+ *  clientAddress, hostAddress, requestDateTime, http headers, status
+ *  responseDateTime, exceptionId.
  *
  * </pre>
  *
@@ -33,10 +35,16 @@ public interface RequestModel {
 
     String getHostAddress();
 
-    Date getDateTime();
+    Date getRequestDateTime();
 
     /**
      * Returns the full HTTP headers as a single JSON string.
      */
     String getHeaders();
+
+    Date getResponseDateTime();
+
+    Status getStatus();
+
+    String getExceptionId();
 }

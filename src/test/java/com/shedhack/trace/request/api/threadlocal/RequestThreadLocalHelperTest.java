@@ -1,6 +1,5 @@
 package com.shedhack.trace.request.api.threadlocal;
 
-import com.shedhack.trace.request.api.model.DefaultRequestModel;
 import com.shedhack.trace.request.api.model.RequestModel;
 import org.junit.Test;
 
@@ -58,7 +57,7 @@ public class RequestThreadLocalHelperTest {
 
         // Act
         DefaultRequestModel.Builder builder = DefaultRequestModel.builder(appId, reqId, grpId);
-        builder.withDateTime(new Date()).withCallerId(calId).withClientAddress(IPadd)
+        builder.withRequestDateTime(new Date()).withCallerId(calId).withClientAddress(IPadd)
                 .withHostAddress(IPadd).withHttpHeaders(headers).withPath(path).withSessionId(sesId);
 
         return builder.build();

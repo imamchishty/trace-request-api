@@ -1,4 +1,7 @@
-package com.shedhack.trace.request.api.model;
+package com.shedhack.trace.request.api.threadlocal;
+
+import com.shedhack.trace.request.api.constant.Status;
+import com.shedhack.trace.request.api.model.RequestModel;
 
 import java.util.Date;
 
@@ -7,7 +10,8 @@ import java.util.Date;
  *  Request model containing the following properties:
  *
  *  applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
- *  clientAddress, hostAddress, dateTime, http headers.
+ *  clientAddress, hostAddress, requestDateTime, http headers, status
+ *  responseDateTime, exceptionId.
  *
  * </pre>
  *
@@ -33,8 +37,8 @@ public class DefaultRequestModel implements RequestModel {
             return this;
         }
 
-        public Builder withDateTime(Date date){
-            model.dateTime = date;
+        public Builder withRequestDateTime(Date date){
+            model.requestDateTime = date;
             return this;
         }
 
@@ -83,9 +87,27 @@ public class DefaultRequestModel implements RequestModel {
             return this;
         }
 
+        public Builder withExceptionId(String exceptionId) {
+            model.exceptionId = exceptionId;
+            return this;
+        }
+
+        public Builder withStatus(Status status) {
+            model.status = status;
+            return this;
+        }
+
+        public Builder withResponseDateTime(Date date) {
+            model.responseDateTime = date;
+            return this;
+        }
+
+
         public RequestModel build() {
             return model;
         }
+
+
     }
 
     // ----------------
@@ -101,9 +123,13 @@ public class DefaultRequestModel implements RequestModel {
     // -----------------------
 
     private String applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
-            clientAddress, hostAddress, headers;
+            clientAddress, hostAddress, headers, exceptionId;
 
-    private Date dateTime;
+    private Date requestDateTime;
+
+    private Date responseDateTime;
+
+    private Status status;
 
     public DefaultRequestModel() {
     }
@@ -180,12 +206,12 @@ public class DefaultRequestModel implements RequestModel {
         this.hostAddress = hostAddress;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getRequestDateTime() {
+        return requestDateTime;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setRequestDateTime(Date requestDateTime) {
+        this.requestDateTime = requestDateTime;
     }
 
     public String getHeaders() {
@@ -196,59 +222,27 @@ public class DefaultRequestModel implements RequestModel {
         this.headers = headers;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DefaultRequestModel that = (DefaultRequestModel) o;
-
-        if (applicationId != null ? !applicationId.equals(that.applicationId) : that.applicationId != null)
-            return false;
-        if (requestId != null ? !requestId.equals(that.requestId) : that.requestId != null) return false;
-        if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) return false;
-        if (callerId != null ? !callerId.equals(that.callerId) : that.callerId != null) return false;
-        if (path != null ? !path.equals(that.path) : that.path != null) return false;
-        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
-        if (httpMethod != null ? !httpMethod.equals(that.httpMethod) : that.httpMethod != null) return false;
-        if (clientAddress != null ? !clientAddress.equals(that.clientAddress) : that.clientAddress != null)
-            return false;
-        if (hostAddress != null ? !hostAddress.equals(that.hostAddress) : that.hostAddress != null) return false;
-        if (headers != null ? !headers.equals(that.headers) : that.headers != null) return false;
-        return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
-
+    public Date getResponseDateTime() {
+        return responseDateTime;
     }
 
-    @Override
-    public int hashCode() {
-        int result = applicationId != null ? applicationId.hashCode() : 0;
-        result = 31 * result + (requestId != null ? requestId.hashCode() : 0);
-        result = 31 * result + (groupId != null ? groupId.hashCode() : 0);
-        result = 31 * result + (callerId != null ? callerId.hashCode() : 0);
-        result = 31 * result + (path != null ? path.hashCode() : 0);
-        result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
-        result = 31 * result + (httpMethod != null ? httpMethod.hashCode() : 0);
-        result = 31 * result + (clientAddress != null ? clientAddress.hashCode() : 0);
-        result = 31 * result + (hostAddress != null ? hostAddress.hashCode() : 0);
-        result = 31 * result + (headers != null ? headers.hashCode() : 0);
-        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
-        return result;
+    public void setResponseDateTime(Date responseDateTime) {
+        this.responseDateTime = responseDateTime;
     }
 
-    @Override
-    public String toString() {
-        return "DefaultRequestModel{" +
-                "applicationId='" + applicationId + '\'' +
-                ", requestId='" + requestId + '\'' +
-                ", groupId='" + groupId + '\'' +
-                ", callerId='" + callerId + '\'' +
-                ", path='" + path + '\'' +
-                ", sessionId='" + sessionId + '\'' +
-                ", httpMethod='" + httpMethod + '\'' +
-                ", clientAddress='" + clientAddress + '\'' +
-                ", hostAddress='" + hostAddress + '\'' +
-                ", headers='" + headers + '\'' +
-                ", dateTime=" + dateTime +
-                '}';
+    public String getExceptionId() {
+        return exceptionId;
+    }
+
+    public void setExceptionId(String exceptionId) {
+        this.exceptionId = exceptionId;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

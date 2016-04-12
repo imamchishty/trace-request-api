@@ -1,4 +1,4 @@
-package com.shedhack.trace.request.api.logging.handler;
+package com.shedhack.trace.request.api.logging;
 
 import com.shedhack.trace.request.api.model.RequestModel;
 
