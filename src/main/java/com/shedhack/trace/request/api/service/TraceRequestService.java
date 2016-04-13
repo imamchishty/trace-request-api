@@ -7,32 +7,32 @@ import java.util.List;
 /**
  * @author imamchishty
  */
-public interface TraceRequestService<T extends RequestModel> {
+public interface TraceRequestService {
 
-    void persist(RequestModel mode);
+    RequestModel persist(RequestModel model);
 
-    T findByRequestId(String requestId);
+    RequestModel findByRequestId(String requestId);
 
-    List<T> findByApplicationId(String applicationId);
+    List<? extends RequestModel> findByApplicationId(String applicationId);
 
-    List<T> findByGroupId(String groupId);
+    List<? extends RequestModel> findByGroupId(String groupId);
 
-    List<T> findByCallerId(String callerId);
+    List<? extends RequestModel> findByCallerId(String callerId);
 
-    List<T> findByPath(String path);
+    List<? extends RequestModel> findByPath(String path);
 
-    List<T> findBySessionId(String sessionId);
+    List<? extends RequestModel> findBySessionId(String sessionId);
 
-    List<T> findByHttpMethod(String httpMethod);
+    List<? extends RequestModel> findByHttpMethod(String httpMethod);
 
-    List<T> findByClientAddress(String clientAddress);
+    List<? extends RequestModel> findByClientAddress(String clientAddress);
 
-    List<T> findByHostAddress(String hostAddress);
+    List<? extends RequestModel> findByHostAddress(String hostAddress);
 
-    List<T> findByHeaders(String headers);
+    List<? extends RequestModel> findByHeaders(String headers);
 
-    List<T> findByExceptionId(String exceptionId);
+    List<? extends RequestModel> findByExceptionId(String exceptionId);
 
-    List<T> findByStatus(String status);
+    List<? extends RequestModel> findByStatus(String status);
 
 }
