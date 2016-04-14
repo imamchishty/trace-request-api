@@ -74,4 +74,8 @@ public interface RequestModel {
 
     void setStatus(Status status);
 
+    int getHttpStatusCode();
+
+    void setHttpStatusCode(int code);
+
 }

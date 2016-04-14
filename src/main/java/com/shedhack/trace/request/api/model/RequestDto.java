@@ -10,7 +10,6 @@ import java.util.Date;
  */
 public class RequestDto implements RequestModel, Serializable {
 
-
     // ----------------------------------
     // Static inner class for the builder
     // ----------------------------------
@@ -93,6 +92,10 @@ public class RequestDto implements RequestModel, Serializable {
             return this;
         }
 
+        public Builder withHttpStatusCode(int code) {
+            model.httpStatusCode = code;
+            return this;
+        }
 
         public RequestDto build() {
             return model;
@@ -127,6 +130,7 @@ public class RequestDto implements RequestModel, Serializable {
     private Date requestDateTime;
     private Date responseDateTime;
     private Status status;
+    private int httpStatusCode;
 
     public String getApplicationId() {
         return applicationId;
@@ -240,70 +244,12 @@ public class RequestDto implements RequestModel, Serializable {
         this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RequestDto that = (RequestDto) o;
-
-        if (requestId != null ? !requestId.equals(that.requestId) : that.requestId != null) return false;
-        if (applicationId != null ? !applicationId.equals(that.applicationId) : that.applicationId != null)
-            return false;
-        if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) return false;
-        if (callerId != null ? !callerId.equals(that.callerId) : that.callerId != null) return false;
-        if (path != null ? !path.equals(that.path) : that.path != null) return false;
-        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
-        if (httpMethod != null ? !httpMethod.equals(that.httpMethod) : that.httpMethod != null) return false;
-        if (clientAddress != null ? !clientAddress.equals(that.clientAddress) : that.clientAddress != null)
-            return false;
-        if (hostAddress != null ? !hostAddress.equals(that.hostAddress) : that.hostAddress != null) return false;
-        if (headers != null ? !headers.equals(that.headers) : that.headers != null) return false;
-        if (exceptionId != null ? !exceptionId.equals(that.exceptionId) : that.exceptionId != null) return false;
-        if (requestDateTime != null ? !requestDateTime.equals(that.requestDateTime) : that.requestDateTime != null)
-            return false;
-        if (responseDateTime != null ? !responseDateTime.equals(that.responseDateTime) : that.responseDateTime != null)
-            return false;
-        return status == that.status;
-
+    public int getHttpStatusCode() {
+        return httpStatusCode;
     }
 
-    @Override
-    public int hashCode() {
-        int result = requestId != null ? requestId.hashCode() : 0;
-        result = 31 * result + (applicationId != null ? applicationId.hashCode() : 0);
-        result = 31 * result + (groupId != null ? groupId.hashCode() : 0);
-        result = 31 * result + (callerId != null ? callerId.hashCode() : 0);
-        result = 31 * result + (path != null ? path.hashCode() : 0);
-        result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
-        result = 31 * result + (httpMethod != null ? httpMethod.hashCode() : 0);
-        result = 31 * result + (clientAddress != null ? clientAddress.hashCode() : 0);
-        result = 31 * result + (hostAddress != null ? hostAddress.hashCode() : 0);
-        result = 31 * result + (headers != null ? headers.hashCode() : 0);
-        result = 31 * result + (exceptionId != null ? exceptionId.hashCode() : 0);
-        result = 31 * result + (requestDateTime != null ? requestDateTime.hashCode() : 0);
-        result = 31 * result + (responseDateTime != null ? responseDateTime.hashCode() : 0);
-        result = 31 * result + (status != null ? status.hashCode() : 0);
-        return result;
+    public void setHttpStatusCode(int httpStatusCode) {
+        this.httpStatusCode = httpStatusCode;
     }
 
-    @Override
-    public String toString() {
-        return "RequestDto{" +
-                "requestId='" + requestId + '\'' +
-                ", applicationId='" + applicationId + '\'' +
-                ", groupId='" + groupId + '\'' +
-                ", callerId='" + callerId + '\'' +
-                ", path='" + path + '\'' +
-                ", sessionId='" + sessionId + '\'' +
-                ", httpMethod='" + httpMethod + '\'' +
-                ", clientAddress='" + clientAddress + '\'' +
-                ", hostAddress='" + hostAddress + '\'' +
-                ", headers='" + headers + '\'' +
-                ", exceptionId='" + exceptionId + '\'' +
-                ", requestDateTime=" + requestDateTime +
-                ", responseDateTime=" + responseDateTime +
-                ", status=" + status +
-                '}';
-    }
 }
