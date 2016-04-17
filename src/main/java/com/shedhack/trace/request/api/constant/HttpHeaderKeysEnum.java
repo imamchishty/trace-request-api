@@ -8,10 +8,9 @@ package com.shedhack.trace.request.api.constant;
 public enum HttpHeaderKeysEnum {
 
     REQUEST_ID("request-id"),
-    GROUP_ID("chain-id"),
+    GROUP_ID("group-id"),
     CALLER_ID("caller-id"),
     HOST("host"),
-    CHAIN_COUNT("chain-count"),
     APPLICATION_ID("application-id"),
     CALLER_IP("X-Forwarded-For"),
     EXCEPTION_ID("Exception-Id"),
