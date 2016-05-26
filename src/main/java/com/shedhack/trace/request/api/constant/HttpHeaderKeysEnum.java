@@ -13,8 +13,8 @@ public enum HttpHeaderKeysEnum {
     HOST("host"),
     APPLICATION_ID("application-id"),
     CALLER_IP("X-Forwarded-For"),
-    EXCEPTION_ID("Exception-Id"),
-    EXCEPTION_TYPE("Exception-Type");
+    EXCEPTION_ID("exception-id"),
+    EXCEPTION_TYPE("exception-type");
 
     private final String key;
 
