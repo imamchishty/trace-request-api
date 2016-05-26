@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Data Transfer Object
  */
-public class RequestDto implements RequestModel, Serializable {
+public class DefaultRequestModel implements RequestModel, Serializable {
 
     // ----------------------------------
     // Static inner class for the builder
@@ -20,7 +20,7 @@ public class RequestDto implements RequestModel, Serializable {
             withApplicationId(appId).withRequestId(reqId).withGroupId(groupId);
         }
 
-        RequestDto model = new RequestDto();
+        DefaultRequestModel model = new DefaultRequestModel();
 
         private Builder withApplicationId(String id) {
             model.applicationId = id;
@@ -97,7 +97,7 @@ public class RequestDto implements RequestModel, Serializable {
             return this;
         }
 
-        public RequestDto build() {
+        public DefaultRequestModel build() {
             return model;
         }
 
