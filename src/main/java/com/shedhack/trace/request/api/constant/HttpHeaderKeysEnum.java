@@ -7,14 +7,16 @@ package com.shedhack.trace.request.api.constant;
  */
 public enum HttpHeaderKeysEnum {
 
-    REQUEST_ID("request-id"),
-    GROUP_ID("group-id"),
-    CALLER_ID("caller-id"),
+    REQUEST_ID("requestId"),
+    GROUP_ID("groupId"),
+    CALLER_ID("callerId"),
     HOST("host"),
-    APPLICATION_ID("application-id"),
+    APPLICATION_ID("applicationId"),
     CALLER_IP("X-Forwarded-For"),
-    EXCEPTION_ID("exception-id"),
-    EXCEPTION_TYPE("exception-type");
+    EXCEPTION_ID("exceptionId"),
+    EXCEPTION_TYPE("exceptionType"),
+    REQUEST_STATUS("requestStatus"),
+    REQUEST_PATH("requestPath");
 
     private final String key;
 
