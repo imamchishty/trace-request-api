@@ -58,7 +58,7 @@ public class RequestThreadLocalHelperTest {
         int statusCode = 400;
         // Act
         DefaultRequestModel.Builder builder = DefaultRequestModel.builder(appId, reqId, grpId);
-        builder.withRequestDateTime(new Date()).withCallerId(calId).withClientAddress(IPadd)
+        builder.withRequestDateTime(new Date().getTime()).withCallerId(calId).withClientAddress(IPadd)
                 .withHostAddress(IPadd).withHttpHeaders(headers).withPath(path).withSessionId(sesId)
                 .withHttpStatusCode(statusCode);
 

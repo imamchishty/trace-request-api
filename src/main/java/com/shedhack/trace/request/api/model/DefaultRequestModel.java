@@ -27,7 +27,7 @@ public class DefaultRequestModel implements RequestModel, Serializable {
             return this;
         }
 
-        public Builder withRequestDateTime(Date date){
+        public Builder withRequestDateTime(long date){
             model.requestDateTime = date;
             return this;
         }
@@ -87,7 +87,7 @@ public class DefaultRequestModel implements RequestModel, Serializable {
             return this;
         }
 
-        public Builder withResponseDateTime(Date date) {
+        public Builder withResponseDateTime(long date) {
             model.responseDateTime = date;
             return this;
         }
@@ -127,8 +127,8 @@ public class DefaultRequestModel implements RequestModel, Serializable {
     private String hostAddress;
     private String headers;
     private String exceptionId;
-    private Date requestDateTime;
-    private Date responseDateTime;
+    private long requestDateTime;
+    private long responseDateTime;
     private Status status;
     private int httpStatusCode;
 
@@ -204,11 +204,11 @@ public class DefaultRequestModel implements RequestModel, Serializable {
         this.hostAddress = hostAddress;
     }
 
-    public Date getRequestDateTime() {
+    public long getRequestDateTime() {
         return requestDateTime;
     }
 
-    public void setRequestDateTime(Date requestDateTime) {
+    public void setRequestDateTime(long requestDateTime) {
         this.requestDateTime = requestDateTime;
     }
 
@@ -220,11 +220,11 @@ public class DefaultRequestModel implements RequestModel, Serializable {
         this.headers = headers;
     }
 
-    public Date getResponseDateTime() {
+    public long getResponseDateTime() {
         return responseDateTime;
     }
 
-    public void setResponseDateTime(Date responseDateTime) {
+    public void setResponseDateTime(long responseDateTime) {
         this.responseDateTime = responseDateTime;
     }
 

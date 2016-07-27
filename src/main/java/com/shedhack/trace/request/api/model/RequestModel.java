@@ -54,17 +54,17 @@ public interface RequestModel {
 
     void setHostAddress(String hostAddress);
 
-    Date getRequestDateTime();
+    long getRequestDateTime();
 
-    void setRequestDateTime(Date requestDateTime);
+    void setRequestDateTime(long requestDateTime);
 
     String getHeaders();
 
     void setHeaders(String headers);
 
-    Date getResponseDateTime();
+    long getResponseDateTime();
 
-    void setResponseDateTime(Date responseDateTime);
+    void setResponseDateTime(long responseDateTime);
 
     String getExceptionId();
 
