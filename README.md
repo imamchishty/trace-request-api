@@ -1,6 +1,6 @@
 # Trace Request API
 
-[![Build Status](https://travis-ci.org/imamchishty/trace-request-api.svg?branch=master "trace-request-api")](https://travis-ci.org/imamchishty/trace-request-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/trace-request-api/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/trace-request-api)
+[![Build Status](https://travis-ci.org/imamchishty/trace-request-api.svg?branch=master "trace-request-api")](https://travis-ci.org/imamchishty/trace-request-api) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.shedhack.trace/trace-request-api/badge.svg?style=plastic)](https://maven-badges.herokuapp.com/maven-central/com.shedhack.filter/trace-request-api)
 
 ## Introduction
 
