@@ -11,11 +11,11 @@ public interface TraceRequestService {
 
     RequestModel persist(RequestModel model);
 
-    RequestModel findByRequestId(String requestId);
+    RequestModel findBySpanId(String spanId);
 
     List<? extends RequestModel> findByApplicationId(String applicationId);
 
-    List<? extends RequestModel> findByGroupId(String groupId);
+    List<? extends RequestModel> findByTraceId(String traceId);
 
     List<? extends RequestModel> findByCallerId(String callerId);
 

@@ -3,7 +3,6 @@ package com.shedhack.trace.request.api.model;
 import com.shedhack.trace.request.api.constant.Status;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Data Transfer Object
@@ -16,8 +15,8 @@ public class DefaultRequestModel implements RequestModel, Serializable {
 
     public static class Builder {
 
-        public Builder(String appId, String reqId, String groupId) {
-            withApplicationId(appId).withRequestId(reqId).withGroupId(groupId);
+        public Builder(String appId, String spanId, String traceId) {
+            withApplicationId(appId).withSpanId(spanId).withTraceId(traceId);
         }
 
         DefaultRequestModel model = new DefaultRequestModel();
@@ -32,13 +31,13 @@ public class DefaultRequestModel implements RequestModel, Serializable {
             return this;
         }
 
-        private Builder withRequestId(String requestId) {
-            model.requestId = requestId;
+        private Builder withSpanId(String spanId) {
+            model.spanId = spanId;
             return this;
         }
 
-        private Builder withGroupId(String groupId) {
-            model.groupId = groupId;
+        private Builder withTraceId(String traceId) {
+            model.traceId = traceId;
             return this;
         }
 
@@ -108,17 +107,17 @@ public class DefaultRequestModel implements RequestModel, Serializable {
     // Static method
     // ----------------
 
-    public static Builder builder(String applicationId, String requestId, String groupId) {
-        return new Builder(applicationId, requestId, groupId);
+    public static Builder builder(String applicationId, String spanId, String traceId) {
+        return new Builder(applicationId, spanId, traceId);
     }
 
     // -----------------------
     // Request DTO variables
     // -----------------------
 
-    private String requestId;
+    private String spanId;
     private String applicationId;
-    private String groupId;
+    private String traceId;
     private String callerId;
     private String path;
     private String sessionId;
@@ -140,20 +139,20 @@ public class DefaultRequestModel implements RequestModel, Serializable {
         this.applicationId = applicationId;
     }
 
-    public String getRequestId() {
-        return requestId;
+    public String getSpanId() {
+        return spanId;
     }
 
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
+    public void setSpanId(String spanId) {
+        this.spanId = spanId;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public String getTraceId() {
+        return traceId;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setTraceId(String traceId) {
+        this.traceId = traceId;
     }
 
     public String getCallerId() {
@@ -252,4 +251,71 @@ public class DefaultRequestModel implements RequestModel, Serializable {
         this.httpStatusCode = httpStatusCode;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DefaultRequestModel that = (DefaultRequestModel) o;
+
+        if (requestDateTime != that.requestDateTime) return false;
+        if (responseDateTime != that.responseDateTime) return false;
+        if (httpStatusCode != that.httpStatusCode) return false;
+        if (spanId != null ? !spanId.equals(that.spanId) : that.spanId != null) return false;
+        if (applicationId != null ? !applicationId.equals(that.applicationId) : that.applicationId != null)
+            return false;
+        if (traceId != null ? !traceId.equals(that.traceId) : that.traceId != null) return false;
+        if (callerId != null ? !callerId.equals(that.callerId) : that.callerId != null) return false;
+        if (path != null ? !path.equals(that.path) : that.path != null) return false;
+        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
+        if (httpMethod != null ? !httpMethod.equals(that.httpMethod) : that.httpMethod != null) return false;
+        if (clientAddress != null ? !clientAddress.equals(that.clientAddress) : that.clientAddress != null)
+            return false;
+        if (hostAddress != null ? !hostAddress.equals(that.hostAddress) : that.hostAddress != null) return false;
+        if (headers != null ? !headers.equals(that.headers) : that.headers != null) return false;
+        if (exceptionId != null ? !exceptionId.equals(that.exceptionId) : that.exceptionId != null) return false;
+        return status == that.status;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = spanId != null ? spanId.hashCode() : 0;
+        result = 31 * result + (applicationId != null ? applicationId.hashCode() : 0);
+        result = 31 * result + (traceId != null ? traceId.hashCode() : 0);
+        result = 31 * result + (callerId != null ? callerId.hashCode() : 0);
+        result = 31 * result + (path != null ? path.hashCode() : 0);
+        result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
+        result = 31 * result + (httpMethod != null ? httpMethod.hashCode() : 0);
+        result = 31 * result + (clientAddress != null ? clientAddress.hashCode() : 0);
+        result = 31 * result + (hostAddress != null ? hostAddress.hashCode() : 0);
+        result = 31 * result + (headers != null ? headers.hashCode() : 0);
+        result = 31 * result + (exceptionId != null ? exceptionId.hashCode() : 0);
+        result = 31 * result + (int) (requestDateTime ^ (requestDateTime >>> 32));
+        result = 31 * result + (int) (responseDateTime ^ (responseDateTime >>> 32));
+        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + httpStatusCode;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "{\"DefaultRequestModel\":{"
+                + "\"spanId\":\"" + spanId + "\""
+                + ", \"applicationId\":\"" + applicationId + "\""
+                + ", \"traceId\":\"" + traceId + "\""
+                + ", \"callerId\":\"" + callerId + "\""
+                + ", \"path\":\"" + path + "\""
+                + ", \"sessionId\":\"" + sessionId + "\""
+                + ", \"httpMethod\":\"" + httpMethod + "\""
+                + ", \"clientAddress\":\"" + clientAddress + "\""
+                + ", \"hostAddress\":\"" + hostAddress + "\""
+                + ", \"headers\":\"" + headers + "\""
+                + ", \"exceptionId\":\"" + exceptionId + "\""
+                + ", \"requestDateTime\":\"" + requestDateTime + "\""
+                + ", \"responseDateTime\":\"" + responseDateTime + "\""
+                + ", \"status\":\"" + status + "\""
+                + ", \"httpStatusCode\":\"" + httpStatusCode + "\""
+                + "}}";
+    }
 }

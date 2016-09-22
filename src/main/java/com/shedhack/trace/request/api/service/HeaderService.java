@@ -9,11 +9,11 @@ import java.util.UUID;
  */
 public interface HeaderService {
 
-    default String generateRequestId() {
+    default String generateSpanId() {
         return UUID.randomUUID().toString();
     }
 
-    default String generateGroupId() {
+    default String generateTraceId() {
         return UUID.randomUUID().toString();
     }
 

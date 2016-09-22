@@ -7,8 +7,8 @@ package com.shedhack.trace.request.api.constant;
  */
 public enum HttpHeaderKeysEnum {
 
-    REQUEST_ID("requestId"),
-    GROUP_ID("groupId"),
+    SPAN_ID("X-B3-SpanId"),
+    TRACE_ID("X-B3-TraceId"),
     CALLER_ID("callerId"),
     HOST("host"),
     APPLICATION_ID("applicationId"),

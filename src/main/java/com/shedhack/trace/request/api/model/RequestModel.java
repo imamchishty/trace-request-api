@@ -8,7 +8,7 @@ import java.util.Date;
  * <pre>
  *  Interface for the RequestModel containing the following properties:
  *
- *  applicationId, requestId, groupId, callerId, path, sessionId, httpMethod,
+ *  applicationId, spanId, traceId, callerId, path, sessionId, httpMethod,
  *  clientAddress, hostAddress, requestDateTime, http headers, status
  *  responseDateTime, exceptionId.
  *
@@ -22,13 +22,13 @@ public interface RequestModel {
 
     void setApplicationId(String applicationId) ;
 
-    String getRequestId();
+    String getSpanId();
 
-    void setRequestId(String requestId);
+    void setSpanId(String requestId);
 
-    String getGroupId();
+    String getTraceId();
 
-    void setGroupId(String groupId);
+    void setTraceId(String traceId);
 
     String getCallerId();
 
