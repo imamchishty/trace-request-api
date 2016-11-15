@@ -3,6 +3,7 @@ package com.shedhack.trace.request.api.model;
 import com.shedhack.trace.request.api.constant.Status;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * <pre>
@@ -58,9 +59,9 @@ public interface RequestModel {
 
     void setRequestDateTime(long requestDateTime);
 
-    String getHeaders();
+    Map<String, String> getHeaders();
 
-    void setHeaders(String headers);
+    void setHeaders(Map<String, String> headers);
 
     long getResponseDateTime();
 

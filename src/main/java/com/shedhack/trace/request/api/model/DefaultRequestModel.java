@@ -3,6 +3,8 @@ package com.shedhack.trace.request.api.model;
 import com.shedhack.trace.request.api.constant.Status;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Data Transfer Object
@@ -71,8 +73,22 @@ public class DefaultRequestModel implements RequestModel, Serializable {
             return this;
         }
 
-        public Builder withHttpHeaders(String headers) {
+        public Builder withHttpHeaders(Map<String, String> headers) {
+
+            if(model.headers == null) {
+                model.headers = new HashMap<>();
+            }
+
             model.headers = headers;
+            return this;
+        }
+
+        public Builder withHttpHeader(String key, String value) {
+            if(model.headers == null) {
+                model.headers = new HashMap<>();
+            }
+
+            model.headers.put(key, value);
             return this;
         }
 
@@ -124,7 +140,7 @@ public class DefaultRequestModel implements RequestModel, Serializable {
     private String httpMethod;
     private String clientAddress;
     private String hostAddress;
-    private String headers;
+    private Map<String, String> headers;
     private String exceptionId;
     private long requestDateTime;
     private long responseDateTime;
@@ -211,11 +227,11 @@ public class DefaultRequestModel implements RequestModel, Serializable {
         this.requestDateTime = requestDateTime;
     }
 
-    public String getHeaders() {
+    public Map<String, String> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(String headers) {
+    public void setHeaders(Map<String, String> headers) {
         this.headers = headers;
     }
 
